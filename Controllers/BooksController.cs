@@ -24,7 +24,7 @@ using Online_Bookstore.Models;
 				_context = context;
 			}
 
-			// 🔹 Get All Books with Pagination
+			
 			[HttpGet]
 			public async Task<ActionResult<IEnumerable<BookDto>>> GetBooks(
 				[FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
@@ -45,7 +45,7 @@ using Online_Bookstore.Models;
 				return Ok(new { TotalRecords = totalRecords, PageNumber = pageNumber, PageSize = pageSize, Data = books });
 			}
 
-			// 🔹 Get a Single Book by ID
+			
 			[HttpGet("{id}")]
 			public async Task<ActionResult<BookDto>> GetBookById(int id)
 			{
@@ -67,7 +67,7 @@ using Online_Bookstore.Models;
 				return Ok(book);
 			}
 
-			// 🔹 Add a New Book
+			
 			[HttpPost]
 			public async Task<ActionResult<Book>> AddBook(BookDto bookDto)
 			{
@@ -83,7 +83,7 @@ using Online_Bookstore.Models;
 				return CreatedAtAction(nameof(GetBookById), new { id = book.Id }, book);
 			}
 
-			// 🔹 Update a Book
+			
 			[HttpPut("{id}")]
 			public async Task<IActionResult> UpdateBook(int id, BookDto bookDto)
 			{
@@ -101,7 +101,7 @@ using Online_Bookstore.Models;
 				return Ok(new { message = "Book updated successfully" });
 			}
 
-			// 🔹 Delete a Book
+			
 			[HttpDelete("{id}")]
 			public async Task<IActionResult> DeleteBook(int id)
 			{
